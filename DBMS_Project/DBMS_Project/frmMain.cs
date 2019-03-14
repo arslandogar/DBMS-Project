@@ -12,7 +12,17 @@ namespace DBMS_Project
 {
     public partial class frmMain : Form
     {
-        public frmMain()
+        private static frmMain obj = null;
+
+        public static frmMain getObject()
+        {
+            if(obj == null)
+            {
+                obj = new frmMain(); 
+            }
+            return obj;
+        }
+        private frmMain()
         {
             InitializeComponent();
         }

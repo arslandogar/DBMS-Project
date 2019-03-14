@@ -44,6 +44,9 @@
             this.groupBoxViewStudenst = new System.Windows.Forms.GroupBox();
             this.dataGridViewStudents = new System.Windows.Forms.DataGridView();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.linkMain = new System.Windows.Forms.LinkLabel();
+            this.checkBoxActive = new System.Windows.Forms.CheckBox();
             this.groupBoxAddStudent.SuspendLayout();
             this.groupBoxViewStudenst.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudents)).BeginInit();
@@ -97,6 +100,9 @@
             // 
             // groupBoxAddStudent
             // 
+            this.groupBoxAddStudent.Controls.Add(this.checkBoxActive);
+            this.groupBoxAddStudent.Controls.Add(this.linkMain);
+            this.groupBoxAddStudent.Controls.Add(this.btnCancel);
             this.groupBoxAddStudent.Controls.Add(this.btnAddStudent);
             this.groupBoxAddStudent.Controls.Add(this.txtRegNo);
             this.groupBoxAddStudent.Controls.Add(this.txtEmail);
@@ -117,10 +123,10 @@
             // 
             // btnAddStudent
             // 
-            this.btnAddStudent.Location = new System.Drawing.Point(225, 153);
+            this.btnAddStudent.Location = new System.Drawing.Point(196, 153);
             this.btnAddStudent.Name = "btnAddStudent";
-            this.btnAddStudent.Size = new System.Drawing.Size(75, 23);
-            this.btnAddStudent.TabIndex = 11;
+            this.btnAddStudent.Size = new System.Drawing.Size(104, 23);
+            this.btnAddStudent.TabIndex = 12;
             this.btnAddStudent.Text = "Add Student";
             this.btnAddStudent.UseVisualStyleBackColor = true;
             this.btnAddStudent.Click += new System.EventHandler(this.btnAddStudent_Click);
@@ -193,6 +199,37 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(358, 152);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 12;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // linkMain
+            // 
+            this.linkMain.AutoSize = true;
+            this.linkMain.Location = new System.Drawing.Point(712, 158);
+            this.linkMain.Name = "linkMain";
+            this.linkMain.Size = new System.Drawing.Size(58, 13);
+            this.linkMain.TabIndex = 13;
+            this.linkMain.TabStop = true;
+            this.linkMain.Text = "Main Page";
+            this.linkMain.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkMain_LinkClicked);
+            // 
+            // checkBoxActive
+            // 
+            this.checkBoxActive.AutoSize = true;
+            this.checkBoxActive.Location = new System.Drawing.Point(348, 111);
+            this.checkBoxActive.Name = "checkBoxActive";
+            this.checkBoxActive.Size = new System.Drawing.Size(56, 17);
+            this.checkBoxActive.TabIndex = 11;
+            this.checkBoxActive.Text = "Active";
+            this.checkBoxActive.UseVisualStyleBackColor = true;
+            // 
             // frmManageStudents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -228,5 +265,8 @@
         private System.Windows.Forms.GroupBox groupBoxViewStudenst;
         private System.Windows.Forms.DataGridView dataGridViewStudents;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.LinkLabel linkMain;
+        private System.Windows.Forms.CheckBox checkBoxActive;
     }
 }

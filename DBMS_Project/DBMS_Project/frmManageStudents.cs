@@ -15,15 +15,15 @@ namespace DBMS_Project
     public partial class frmManageStudents : Form
     {
         public string conString = "Data Source=DESKTOP-4GO5058\\SQLEXPRESS;Initial Catalog = ProjectB; Integrated Security = True";
-        public frmManageStudents()
-        {
-            InitializeComponent();
-        }
 
-        private void frmManageStudents_Load(object sender, EventArgs e)
+        public int selectedId;
+
+        public frmManageStudents()
         {
             DataGridViewButtonColumn btnUpdate = new DataGridViewButtonColumn();
             DataGridViewButtonColumn btnDelete = new DataGridViewButtonColumn();
+            InitializeComponent();
+            ShowStudentData();
             //
             // btnUpdate
             // 
@@ -40,34 +40,59 @@ namespace DBMS_Project
             btnDelete.ReadOnly = true;
             btnDelete.Text = "Delete";
             btnDelete.UseColumnTextForButtonValue = true;
-            // 
-            dataGridViewStudents.ReadOnly = true;
-            ShowStudentData();
             dataGridViewStudents.Columns.Add(btnUpdate);
             dataGridViewStudents.Columns.Add(btnDelete);
+        }
 
+        private void frmManageStudents_Load(object sender, EventArgs e)
+        {
+            ShowStudentData();
+            resetForm();
         }
 
         private void btnAddStudent_Click(object sender, EventArgs e)
         {
-            if(!validateForm())
+            if (!validateForm())
             {
                 MessageBox.Show("Please Enter Valid Values!");
                 return;
             }
-            string qeury = "insert into dbo.Student( FirstName,LastName,Contact,Email,RegistrationNumber,Status) values('" + this.txtFirstName.Text + "','" + this.txtLastName.Text + "','" + this.txtContact.Text + "','" + this.txtEmail.Text + "','" + this.txtRegNo.Text + "','" + 1 + "')";
             SqlConnection con = new SqlConnection(@conString);
-            SqlCommand cmd = new SqlCommand(qeury, con);
+            int status = 1;
             con.Open();
-            int i = cmd.ExecuteNonQuery();
-            con.Close();
-            ShowStudentData();
-            if (i != 0)
+            if (btnAddStudent.Text == "Add Student")
             {
-                MessageBox.Show("Student Added!");
-                resetForm();
+                if(!checkBoxActive.Checked)
+                {
+                    status = 0;
+                }
+                string query = "insert into dbo.Student( FirstName,LastName,Contact,Email,RegistrationNumber,Status) values('" + this.txtFirstName.Text + "','" + this.txtLastName.Text + "','" + this.txtContact.Text + "','" + this.txtEmail.Text + "','" + this.txtRegNo.Text + "','" + status + "')";
+                SqlCommand cmd = new SqlCommand(query, con);
+                int i = cmd.ExecuteNonQuery();
+                con.Close();
+                ShowStudentData();
+                if (i != 0)
+                {
+                    MessageBox.Show("Student Added!");
+                    resetForm();
+                }
             }
+            else if (btnAddStudent.Text == "Update Student")
+            {
+                string query = "update dbo.Student set FirstName ='" + txtFirstName.Text + "', LastName ='" + txtLastName.Text + "', Contact ='" + txtContact.Text + "', Email ='" + txtEmail.Text + "', RegistrationNumber ='" + txtRegNo.Text + "' Where Id ='" + selectedId + "' ";
+                SqlCommand cmd = new SqlCommand(query, con);
+                int i = cmd.ExecuteNonQuery();
+                con.Close();
+                ShowStudentData();
+                if (i != 0)
+                {
+                    MessageBox.Show("Student Updated!");
+                    frmManageStudents_Load(sender, e);
+                    resetForm();
+                }
 
+
+            }
         }
 
         
@@ -115,10 +140,10 @@ namespace DBMS_Project
         private void dataGridViewStudents_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = dataGridViewStudents.Columns["ID"].Index;
-            int id = Convert.ToInt32(dataGridViewStudents.Rows[e.RowIndex].Cells[index].Value);
+            selectedId = Convert.ToInt32(dataGridViewStudents.Rows[e.RowIndex].Cells[index].Value);
             if (e.ColumnIndex == dataGridViewStudents.Columns["btnDelete"].Index)
             {
-                string qeury = "delete from dbo.Student where ID = '" + id + "'";
+                string qeury = "delete from dbo.Student where ID = '" + selectedId + "'";
                 SqlConnection con = new SqlConnection(@conString);
                 SqlCommand cmd = new SqlCommand(qeury, con);
                 con.Open();
@@ -128,22 +153,49 @@ namespace DBMS_Project
             }
             else if(e.ColumnIndex == dataGridViewStudents.Columns["btnUpdate"].Index)
             {
-                string qeury = "select * from dbo.Student where ID = '" + id + "'";
+                string qeury = "select * from dbo.Student where ID = '" + selectedId + "'";
                 SqlConnection con = new SqlConnection(@conString);
                 SqlCommand cmd = new SqlCommand(qeury, con);
                 con.Open();
                 using (SqlDataReader oReader = cmd.ExecuteReader())
                 {
-                    while (oReader.Read())
+                    while(oReader.Read())
                     {
                         txtFirstName.Text = oReader["FirstName"].ToString();
+                        txtLastName.Text = oReader["LastName"].ToString();
+                        txtContact.Text = oReader["Contact"].ToString();
+                        txtEmail.Text = oReader["Email"].ToString();
+                        txtRegNo.Text = oReader["RegistrationNumber"].ToString();
+                        if(Convert.ToInt32(oReader["Status"]) == 0)
+                        {
+                            checkBoxActive.Checked = false;
+                        }
+                        else
+                        {
+                            checkBoxActive.Checked = true;
+                        }
+                        
                     }
+                    
                 }
                 con.Close();
-                ShowStudentData();
+                btnAddStudent.Text = "Update Student";
+                groupBoxAddStudent.Text = "Update Student";
+                btnCancel.Enabled = true;
+                btnCancel.Enabled = true;
             }
-            
-            //if (e.ColumnIndex == dataClo.Columns["delete"].Index)
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            resetForm();
+        }
+
+        private void linkMain_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmMain temp = frmMain.getObject();
+            temp.Show();
+            this.Close();
         }
 
         //
@@ -215,6 +267,17 @@ namespace DBMS_Project
                 errorProvider1.SetError(txtEmail, "Please Enter a valid Email Address!");
                 return false;
             }
+            string query = "select count(*) from dbo.Student where Email = '" + txtEmail.Text + "'";
+            SqlConnection con = new SqlConnection(@conString);
+            SqlCommand cmd = new SqlCommand(query, con);
+            con.Open();
+            int records = (int)cmd.ExecuteScalar();
+            con.Close();
+            if(records > 0)
+            {
+                errorProvider1.SetError(txtEmail, "This Email Address Already Exists!");
+                return false;
+            }
             errorProvider1.SetError(txtEmail, "");
             return true;
         }
@@ -230,6 +293,17 @@ namespace DBMS_Project
             if (!rRegNo.IsMatch(txtRegNo.Text))
             {
                 errorProvider1.SetError(txtRegNo, "Please Enter a valid Registration Number!");
+                return false;
+            }
+            string query = "select count(*) from dbo.Student where RegistrationNumber = '" + txtRegNo.Text + "'";
+            SqlConnection con = new SqlConnection(@conString);
+            SqlCommand cmd = new SqlCommand(query, con);
+            con.Open();
+            int records = (int)cmd.ExecuteScalar();
+            con.Close();
+            if (records > 0)
+            {
+                errorProvider1.SetError(txtRegNo, "This Registration Number Already Exists!");
                 return false;
             }
             errorProvider1.SetError(txtRegNo, "");
@@ -256,6 +330,11 @@ namespace DBMS_Project
             txtContact.Text = "";
             txtEmail.Text = "";
             txtRegNo.Text = "";
+            btnCancel.Enabled = false;
+            btnCancel.Enabled = false;
+            btnAddStudent.Text = "Add Student";
+            groupBoxAddStudent.Text = "Add Student";
+            checkBoxActive.Checked = true;
         }
 
         private bool validateForm()
@@ -266,7 +345,5 @@ namespace DBMS_Project
             }
             return true;
         }
-
-        
     }
 }
