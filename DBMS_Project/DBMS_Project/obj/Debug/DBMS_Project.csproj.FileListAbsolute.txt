@@ -9,3 +9,14 @@ E:\DBMS Project\DBMS-Project\DBMS_Project\DBMS_Project\DBMS_Project\bin\Debug\DB
 E:\DBMS Project\DBMS-Project\DBMS_Project\DBMS_Project\DBMS_Project\bin\Debug\DBMS_Project.pdb
 E:\DBMS Project\DBMS-Project\DBMS_Project\DBMS_Project\DBMS_Project\obj\Debug\DBMS_Project.exe
 E:\DBMS Project\DBMS-Project\DBMS_Project\DBMS_Project\DBMS_Project\obj\Debug\DBMS_Project.pdb
+E:\DBMS-Project\DBMS-Project\DBMS_Project\DBMS_Project\bin\Debug\DBMS_Project.exe.config
+E:\DBMS-Project\DBMS-Project\DBMS_Project\DBMS_Project\bin\Debug\DBMS_Project.exe
+E:\DBMS-Project\DBMS-Project\DBMS_Project\DBMS_Project\bin\Debug\DBMS_Project.pdb
+E:\DBMS-Project\DBMS-Project\DBMS_Project\DBMS_Project\obj\Debug\DBMS_Project.csprojAssemblyReference.cache
+E:\DBMS-Project\DBMS-Project\DBMS_Project\DBMS_Project\obj\Debug\DBMS_Project.frmMain.resources
+E:\DBMS-Project\DBMS-Project\DBMS_Project\DBMS_Project\obj\Debug\DBMS_Project.frmManageStudents.resources
+E:\DBMS-Project\DBMS-Project\DBMS_Project\DBMS_Project\obj\Debug\DBMS_Project.Properties.Resources.resources
+E:\DBMS-Project\DBMS-Project\DBMS_Project\DBMS_Project\obj\Debug\DBMS_Project.csproj.GenerateResource.cache
+E:\DBMS-Project\DBMS-Project\DBMS_Project\DBMS_Project\obj\Debug\DBMS_Project.csproj.CoreCompileInputs.cache
+E:\DBMS-Project\DBMS-Project\DBMS_Project\DBMS_Project\obj\Debug\DBMS_Project.exe
+E:\DBMS-Project\DBMS-Project\DBMS_Project\DBMS_Project\obj\Debug\DBMS_Project.pdb
