@@ -187,6 +187,7 @@
             this.dataGridViewStudents.Name = "dataGridViewStudents";
             this.dataGridViewStudents.Size = new System.Drawing.Size(761, 189);
             this.dataGridViewStudents.TabIndex = 0;
+            this.dataGridViewStudents.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewStudents_CellContentClick);
             // 
             // errorProvider1
             // 
