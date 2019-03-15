@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBoxAddCLO = new System.Windows.Forms.GroupBox();
+            this.linkMain = new System.Windows.Forms.LinkLabel();
             this.btnCancel = new System.Windows.Forms.Button();
             this.txtCLOName = new System.Windows.Forms.TextBox();
             this.btnAddCLO = new System.Windows.Forms.Button();
@@ -37,7 +38,6 @@
             this.groupBoxCLOs = new System.Windows.Forms.GroupBox();
             this.dataGridViewCLOs = new System.Windows.Forms.DataGridView();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.linkMain = new System.Windows.Forms.LinkLabel();
             this.groupBoxAddCLO.SuspendLayout();
             this.groupBoxCLOs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCLOs)).BeginInit();
@@ -57,6 +57,17 @@
             this.groupBoxAddCLO.TabIndex = 0;
             this.groupBoxAddCLO.TabStop = false;
             this.groupBoxAddCLO.Text = "Add CLO";
+            // 
+            // linkMain
+            // 
+            this.linkMain.AutoSize = true;
+            this.linkMain.Location = new System.Drawing.Point(712, 104);
+            this.linkMain.Name = "linkMain";
+            this.linkMain.Size = new System.Drawing.Size(58, 13);
+            this.linkMain.TabIndex = 14;
+            this.linkMain.TabStop = true;
+            this.linkMain.Text = "Main Page";
+            this.linkMain.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkMain_LinkClicked);
             // 
             // btnCancel
             // 
@@ -80,9 +91,9 @@
             // 
             // btnAddCLO
             // 
-            this.btnAddCLO.Location = new System.Drawing.Point(92, 63);
+            this.btnAddCLO.Location = new System.Drawing.Point(80, 63);
             this.btnAddCLO.Name = "btnAddCLO";
-            this.btnAddCLO.Size = new System.Drawing.Size(75, 23);
+            this.btnAddCLO.Size = new System.Drawing.Size(104, 23);
             this.btnAddCLO.TabIndex = 2;
             this.btnAddCLO.Text = "Add CLO";
             this.btnAddCLO.UseVisualStyleBackColor = true;
@@ -125,17 +136,6 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // linkMain
-            // 
-            this.linkMain.AutoSize = true;
-            this.linkMain.Location = new System.Drawing.Point(712, 104);
-            this.linkMain.Name = "linkMain";
-            this.linkMain.Size = new System.Drawing.Size(58, 13);
-            this.linkMain.TabIndex = 14;
-            this.linkMain.TabStop = true;
-            this.linkMain.Text = "Main Page";
-            this.linkMain.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkMain_LinkClicked);
             // 
             // frmManageCLOs
             // 

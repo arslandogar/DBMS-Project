@@ -103,6 +103,7 @@ namespace DBMS_Project
                 cmd.ExecuteNonQuery();
                 con.Close();
                 ShowCLOData();
+                MessageBox.Show("CLO Deleted!");
             }
             else if (e.ColumnIndex == dataGridViewCLOs.Columns["btnUpdate"].Index)
             {
@@ -123,6 +124,10 @@ namespace DBMS_Project
                 groupBoxAddCLO.Text = "Update CLO";
                 btnCancel.Enabled = true;
                 btnCancel.Visible = true;
+            }
+            else if (e.ColumnIndex == dataGridViewCLOs.Columns["btnRubrics"].Index)
+            {
+                openRubricsForm();
             }
         }
 
@@ -191,6 +196,28 @@ namespace DBMS_Project
             groupBoxAddCLO.Text = "Add CLO";
         }
 
-        
+        private void openRubricsForm()
+        {
+            string name;
+            frmManageRubrics temp = new frmManageRubrics();
+            string qeury = "SELECT * FROM dbo.Clo WHERE ID = '" + selectedId + "'";
+            SqlConnection con = new SqlConnection(DBClass.conString);
+            SqlCommand cmd = new SqlCommand(qeury, con);
+            con.Open();
+            using (SqlDataReader oReader = cmd.ExecuteReader())
+            {
+                while (oReader.Read())
+                {
+                    name = oReader["Name"].ToString();
+                    temp.labelCLODetails.Text = "Add Rubric For CLO: " + name;
+                    temp.groupBoxRubrics.Text = "View Rubrics For CLO: " + name;
+                    temp.txtCLOId.Text = selectedId.ToString();
+                }
+
+            }
+            con.Close();
+            temp.Show();
+            this.Close();
+        }
     }
 }

@@ -169,6 +169,7 @@ namespace DBMS_Project
                 cmd.ExecuteNonQuery();
                 con.Close();
                 ShowStudentData();
+                MessageBox.Show("Student Deleted!");
             }
             else if(e.ColumnIndex == dataGridViewStudents.Columns["btnUpdate"].Index)
             {

@@ -27,14 +27,14 @@ namespace DBMS_Project
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void linkManageStudents_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             frmManageStudents temp = new frmManageStudents();
             temp.Show();
             this.Hide();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void linkManageCLOR_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             frmManageCLOs temp = new frmManageCLOs();
             temp.Show();

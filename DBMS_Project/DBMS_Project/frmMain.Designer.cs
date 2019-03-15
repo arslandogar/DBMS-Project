@@ -28,47 +28,50 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.linkManageStudents = new System.Windows.Forms.LinkLabel();
+            this.linkManageCLOR = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
-            // button1
+            // linkManageStudents
             // 
-            this.button1.Location = new System.Drawing.Point(174, 173);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(159, 74);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Manage Students";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.linkManageStudents.AutoSize = true;
+            this.linkManageStudents.Location = new System.Drawing.Point(357, 176);
+            this.linkManageStudents.Name = "linkManageStudents";
+            this.linkManageStudents.Size = new System.Drawing.Size(91, 13);
+            this.linkManageStudents.TabIndex = 0;
+            this.linkManageStudents.TabStop = true;
+            this.linkManageStudents.Text = "Manage Students";
+            this.linkManageStudents.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkManageStudents_LinkClicked);
             // 
-            // button2
+            // linkManageCLOR
             // 
-            this.button2.Location = new System.Drawing.Point(374, 173);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(159, 74);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Manage CLOs";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.linkManageCLOR.AutoSize = true;
+            this.linkManageCLOR.Location = new System.Drawing.Point(357, 245);
+            this.linkManageCLOR.Name = "linkManageCLOR";
+            this.linkManageCLOR.Size = new System.Drawing.Size(135, 13);
+            this.linkManageCLOR.TabIndex = 1;
+            this.linkManageCLOR.TabStop = true;
+            this.linkManageCLOR.Text = "Manage CLOs and Rubrics";
+            this.linkManageCLOR.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkManageCLOR_LinkClicked);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.linkManageCLOR);
+            this.Controls.Add(this.linkManageStudents);
             this.Name = "frmMain";
             this.Text = "Main";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.LinkLabel linkManageStudents;
+        private System.Windows.Forms.LinkLabel linkManageCLOR;
     }
 }
 
