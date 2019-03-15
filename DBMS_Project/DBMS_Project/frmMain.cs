@@ -33,5 +33,12 @@ namespace DBMS_Project
             temp.Show();
             this.Hide();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            frmManageCLOs temp = new frmManageCLOs();
+            temp.Show();
+            this.Hide();
+        }
     }
 }

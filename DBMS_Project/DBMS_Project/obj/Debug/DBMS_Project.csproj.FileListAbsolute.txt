@@ -20,3 +20,4 @@ E:\DBMS-Project\DBMS-Project\DBMS_Project\DBMS_Project\obj\Debug\DBMS_Project.cs
 E:\DBMS-Project\DBMS-Project\DBMS_Project\DBMS_Project\obj\Debug\DBMS_Project.csproj.CoreCompileInputs.cache
 E:\DBMS-Project\DBMS-Project\DBMS_Project\DBMS_Project\obj\Debug\DBMS_Project.exe
 E:\DBMS-Project\DBMS-Project\DBMS_Project\DBMS_Project\obj\Debug\DBMS_Project.pdb
+E:\DBMS-Project\DBMS-Project\DBMS_Project\DBMS_Project\obj\Debug\DBMS_Project.frmManageCLOs.resources

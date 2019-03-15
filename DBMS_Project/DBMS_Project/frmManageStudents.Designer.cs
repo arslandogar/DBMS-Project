@@ -35,6 +35,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBoxAddStudent = new System.Windows.Forms.GroupBox();
+            this.checkBoxActive = new System.Windows.Forms.CheckBox();
+            this.linkMain = new System.Windows.Forms.LinkLabel();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.btnAddStudent = new System.Windows.Forms.Button();
             this.txtRegNo = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -44,9 +47,6 @@
             this.groupBoxViewStudenst = new System.Windows.Forms.GroupBox();
             this.dataGridViewStudents = new System.Windows.Forms.DataGridView();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.linkMain = new System.Windows.Forms.LinkLabel();
-            this.checkBoxActive = new System.Windows.Forms.CheckBox();
             this.groupBoxAddStudent.SuspendLayout();
             this.groupBoxViewStudenst.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudents)).BeginInit();
@@ -121,6 +121,37 @@
             this.groupBoxAddStudent.TabStop = false;
             this.groupBoxAddStudent.Text = "Add Student";
             // 
+            // checkBoxActive
+            // 
+            this.checkBoxActive.AutoSize = true;
+            this.checkBoxActive.Location = new System.Drawing.Point(348, 111);
+            this.checkBoxActive.Name = "checkBoxActive";
+            this.checkBoxActive.Size = new System.Drawing.Size(56, 17);
+            this.checkBoxActive.TabIndex = 11;
+            this.checkBoxActive.Text = "Active";
+            this.checkBoxActive.UseVisualStyleBackColor = true;
+            // 
+            // linkMain
+            // 
+            this.linkMain.AutoSize = true;
+            this.linkMain.Location = new System.Drawing.Point(712, 158);
+            this.linkMain.Name = "linkMain";
+            this.linkMain.Size = new System.Drawing.Size(58, 13);
+            this.linkMain.TabIndex = 13;
+            this.linkMain.TabStop = true;
+            this.linkMain.Text = "Main Page";
+            this.linkMain.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkMain_LinkClicked);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(358, 152);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 12;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // btnAddStudent
             // 
             this.btnAddStudent.Location = new System.Drawing.Point(196, 153);
@@ -191,6 +222,7 @@
             this.dataGridViewStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewStudents.Location = new System.Drawing.Point(9, 19);
             this.dataGridViewStudents.Name = "dataGridViewStudents";
+            this.dataGridViewStudents.ReadOnly = true;
             this.dataGridViewStudents.Size = new System.Drawing.Size(761, 189);
             this.dataGridViewStudents.TabIndex = 0;
             this.dataGridViewStudents.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewStudents_CellContentClick);
@@ -198,37 +230,6 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(358, 152);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 12;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // linkMain
-            // 
-            this.linkMain.AutoSize = true;
-            this.linkMain.Location = new System.Drawing.Point(712, 158);
-            this.linkMain.Name = "linkMain";
-            this.linkMain.Size = new System.Drawing.Size(58, 13);
-            this.linkMain.TabIndex = 13;
-            this.linkMain.TabStop = true;
-            this.linkMain.Text = "Main Page";
-            this.linkMain.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkMain_LinkClicked);
-            // 
-            // checkBoxActive
-            // 
-            this.checkBoxActive.AutoSize = true;
-            this.checkBoxActive.Location = new System.Drawing.Point(348, 111);
-            this.checkBoxActive.Name = "checkBoxActive";
-            this.checkBoxActive.Size = new System.Drawing.Size(56, 17);
-            this.checkBoxActive.TabIndex = 11;
-            this.checkBoxActive.Text = "Active";
-            this.checkBoxActive.UseVisualStyleBackColor = true;
             // 
             // frmManageStudents
             // 

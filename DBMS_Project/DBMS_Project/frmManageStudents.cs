@@ -14,7 +14,6 @@ namespace DBMS_Project
 {
     public partial class frmManageStudents : Form
     {
-        public string conString = "Data Source=DESKTOP-4GO5058\\SQLEXPRESS;Initial Catalog = ProjectB; Integrated Security = True";
 
         public int selectedId;
 
@@ -57,17 +56,28 @@ namespace DBMS_Project
                 MessageBox.Show("Please Enter Valid Values!");
                 return;
             }
-            SqlConnection con = new SqlConnection(@conString);
             int status = 1;
-            con.Open();
+            
             if (btnAddStudent.Text == "Add Student")
             {
+                if(!isUniqueEmail())
+                {
+                    MessageBox.Show("This Email Already Exists!");
+                    return;
+                }
+                if(!isUniqueRegNo())
+                {
+                    MessageBox.Show("This Registration Number Already Exists!");
+                    return;
+                }
                 if(!checkBoxActive.Checked)
                 {
                     status = 0;
                 }
                 string query = "insert into dbo.Student( FirstName,LastName,Contact,Email,RegistrationNumber,Status) values('" + this.txtFirstName.Text + "','" + this.txtLastName.Text + "','" + this.txtContact.Text + "','" + this.txtEmail.Text + "','" + this.txtRegNo.Text + "','" + status + "')";
+                SqlConnection con = new SqlConnection(DBClass.conString);
                 SqlCommand cmd = new SqlCommand(query, con);
+                con.Open();
                 int i = cmd.ExecuteNonQuery();
                 con.Close();
                 ShowStudentData();
@@ -79,62 +89,71 @@ namespace DBMS_Project
             }
             else if (btnAddStudent.Text == "Update Student")
             {
-                string query = "update dbo.Student set FirstName ='" + txtFirstName.Text + "', LastName ='" + txtLastName.Text + "', Contact ='" + txtContact.Text + "', Email ='" + txtEmail.Text + "', RegistrationNumber ='" + txtRegNo.Text + "' Where Id ='" + selectedId + "' ";
+
+                string query = "select * from dbo.Student where ID = '" + selectedId + "'";
+                SqlConnection con = new SqlConnection(DBClass.conString);
                 SqlCommand cmd = new SqlCommand(query, con);
+                con.Open();
+                using (SqlDataReader oReader = cmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        if (txtEmail.Text != oReader["Email"].ToString())
+                        {
+                            if (!isUniqueEmail())
+                            {
+                                MessageBox.Show("This Email Already Exists!");
+                                return;
+                            }
+                        }
+                        if (txtRegNo.Text != oReader["RegistrationNumber"].ToString())
+                        {
+                            if (!isUniqueRegNo())
+                            {
+                                MessageBox.Show("This Registration Number Already Exists!");
+                                return;
+                            }
+                        }
+                    }
+                }
+                query = "update dbo.Student set FirstName ='" + txtFirstName.Text + "', LastName ='" + txtLastName.Text + "', Contact ='" + txtContact.Text + "', Email ='" + txtEmail.Text + "', RegistrationNumber ='" + txtRegNo.Text +  "' Where Id ='" + selectedId + "' ";
+                cmd = new SqlCommand(query, con);
                 int i = cmd.ExecuteNonQuery();
                 con.Close();
-                ShowStudentData();
                 if (i != 0)
                 {
+                    ShowStudentData();
                     MessageBox.Show("Student Updated!");
-                    frmManageStudents_Load(sender, e);
                     resetForm();
                 }
-
-
             }
         }
 
         
         private void txtFirstName_Validating(object sender, CancelEventArgs e)
         {
-            if(!validateFirstName())
-            {
-                e.Cancel = true;
-            }
+            validateFirstName();
             
         }
 
         private void txtLastName_Validating(object sender, CancelEventArgs e)
         {
-            if(!validateLastName())
-            {
-                e.Cancel = true;
-            }
+            validateLastName();
         }
 
         private void txtContact_Validating(object sender, CancelEventArgs e)
         {
-            if(!validateContact())
-            {
-                e.Cancel = true;
-            }
+            validateContact();
         }
 
         private void txtEmail_Validating(object sender, CancelEventArgs e)
         {
-            if(!validateEmail())
-            {
-                e.Cancel = true;
-            }
+            validateEmail();
         }
 
         private void txtRegNo_Validating(object sender, CancelEventArgs e)
         {
-            if(!validateRegNo())
-            {
-                e.Cancel = true;
-            }
+            validateRegNo();
         }
 
         private void dataGridViewStudents_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -144,7 +163,7 @@ namespace DBMS_Project
             if (e.ColumnIndex == dataGridViewStudents.Columns["btnDelete"].Index)
             {
                 string qeury = "delete from dbo.Student where ID = '" + selectedId + "'";
-                SqlConnection con = new SqlConnection(@conString);
+                SqlConnection con = new SqlConnection(DBClass.conString);
                 SqlCommand cmd = new SqlCommand(qeury, con);
                 con.Open();
                 cmd.ExecuteNonQuery();
@@ -154,7 +173,7 @@ namespace DBMS_Project
             else if(e.ColumnIndex == dataGridViewStudents.Columns["btnUpdate"].Index)
             {
                 string qeury = "select * from dbo.Student where ID = '" + selectedId + "'";
-                SqlConnection con = new SqlConnection(@conString);
+                SqlConnection con = new SqlConnection(DBClass.conString);
                 SqlCommand cmd = new SqlCommand(qeury, con);
                 con.Open();
                 using (SqlDataReader oReader = cmd.ExecuteReader())
@@ -182,7 +201,7 @@ namespace DBMS_Project
                 btnAddStudent.Text = "Update Student";
                 groupBoxAddStudent.Text = "Update Student";
                 btnCancel.Enabled = true;
-                btnCancel.Enabled = true;
+                btnCancel.Visible = true;
             }
         }
 
@@ -267,17 +286,6 @@ namespace DBMS_Project
                 errorProvider1.SetError(txtEmail, "Please Enter a valid Email Address!");
                 return false;
             }
-            string query = "select count(*) from dbo.Student where Email = '" + txtEmail.Text + "'";
-            SqlConnection con = new SqlConnection(@conString);
-            SqlCommand cmd = new SqlCommand(query, con);
-            con.Open();
-            int records = (int)cmd.ExecuteScalar();
-            con.Close();
-            if(records > 0)
-            {
-                errorProvider1.SetError(txtEmail, "This Email Address Already Exists!");
-                return false;
-            }
             errorProvider1.SetError(txtEmail, "");
             return true;
         }
@@ -295,8 +303,32 @@ namespace DBMS_Project
                 errorProvider1.SetError(txtRegNo, "Please Enter a valid Registration Number!");
                 return false;
             }
+            
+            errorProvider1.SetError(txtRegNo, "");
+            return true;
+        }
+
+        private bool isUniqueEmail()
+        {
+            string query = "select count(*) from dbo.Student where Email = '" + txtEmail.Text + "'";
+            SqlConnection con = new SqlConnection(DBClass.conString);
+            SqlCommand cmd = new SqlCommand(query, con);
+            con.Open();
+            int records = (int)cmd.ExecuteScalar();
+            con.Close();
+            if (records > 0)
+            {
+                errorProvider1.SetError(txtEmail, "This Email Address Already Exists!");
+                return false;
+            }
+            errorProvider1.SetError(txtEmail, "");
+            return true;
+        }
+
+        private bool isUniqueRegNo()
+        {
             string query = "select count(*) from dbo.Student where RegistrationNumber = '" + txtRegNo.Text + "'";
-            SqlConnection con = new SqlConnection(@conString);
+            SqlConnection con = new SqlConnection(DBClass.conString);
             SqlCommand cmd = new SqlCommand(query, con);
             con.Open();
             int records = (int)cmd.ExecuteScalar();
@@ -313,7 +345,7 @@ namespace DBMS_Project
         private void ShowStudentData()
         {
             string query = "select * from dbo.Student";
-            SqlConnection con = new SqlConnection(@conString);
+            SqlConnection con = new SqlConnection(DBClass.conString);
             con.Open();
             SqlCommand cmd = new SqlCommand(query, con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -331,7 +363,7 @@ namespace DBMS_Project
             txtEmail.Text = "";
             txtRegNo.Text = "";
             btnCancel.Enabled = false;
-            btnCancel.Enabled = false;
+            btnCancel.Visible = false;
             btnAddStudent.Text = "Add Student";
             groupBoxAddStudent.Text = "Add Student";
             checkBoxActive.Checked = true;
@@ -339,11 +371,8 @@ namespace DBMS_Project
 
         private bool validateForm()
         {
-            if(txtFirstName.Text == "" || txtEmail.Text == "" || txtRegNo.Text == "")
-            {
-                return false;
-            }
-            return true;
+            return validateFirstName() && validateLastName() && validateContact() &&
+                    validateEmail() && validateRegNo();
         }
     }
 }

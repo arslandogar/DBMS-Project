@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBClass.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,10 +59,19 @@
     <Compile Include="frmManageStudents.Designer.cs">
       <DependentUpon>frmManageStudents.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmManageCLOs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManageCLOs.Designer.cs">
+      <DependentUpon>frmManageCLOs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmManageCLOs.resx">
+      <DependentUpon>frmManageCLOs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmManageStudents.resx">
       <DependentUpon>frmManageStudents.cs</DependentUpon>
