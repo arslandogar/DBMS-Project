@@ -22,3 +22,4 @@ E:\DBMS-Project\DBMS-Project\DBMS_Project\DBMS_Project\obj\Debug\DBMS_Project.ex
 E:\DBMS-Project\DBMS-Project\DBMS_Project\DBMS_Project\obj\Debug\DBMS_Project.pdb
 E:\DBMS-Project\DBMS-Project\DBMS_Project\DBMS_Project\obj\Debug\DBMS_Project.frmManageCLOs.resources
 E:\DBMS-Project\DBMS-Project\DBMS_Project\DBMS_Project\obj\Debug\DBMS_Project.frmManageRubrics.resources
+E:\DBMS-Project\DBMS-Project\DBMS_Project\DBMS_Project\obj\Debug\DBMS_Project.frmManageAssessments.resources

@@ -40,5 +40,12 @@ namespace DBMS_Project
             temp.Show();
             this.Hide();
         }
+
+        private void linkManageAssessments_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmManageAssessments temp = new frmManageAssessments();
+            temp.Show();
+            this.Hide();
+        }
     }
 }

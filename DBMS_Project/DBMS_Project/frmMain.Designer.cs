@@ -30,6 +30,7 @@
         {
             this.linkManageStudents = new System.Windows.Forms.LinkLabel();
             this.linkManageCLOR = new System.Windows.Forms.LinkLabel();
+            this.linkManageAssessments = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // linkManageStudents
@@ -54,11 +55,23 @@
             this.linkManageCLOR.Text = "Manage CLOs and Rubrics";
             this.linkManageCLOR.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkManageCLOR_LinkClicked);
             // 
+            // linkManageAssessments
+            // 
+            this.linkManageAssessments.AutoSize = true;
+            this.linkManageAssessments.Location = new System.Drawing.Point(357, 211);
+            this.linkManageAssessments.Name = "linkManageAssessments";
+            this.linkManageAssessments.Size = new System.Drawing.Size(110, 13);
+            this.linkManageAssessments.TabIndex = 2;
+            this.linkManageAssessments.TabStop = true;
+            this.linkManageAssessments.Text = "Manage Assessments";
+            this.linkManageAssessments.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkManageAssessments_LinkClicked);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.linkManageAssessments);
             this.Controls.Add(this.linkManageCLOR);
             this.Controls.Add(this.linkManageStudents);
             this.Name = "frmMain";
@@ -72,6 +85,7 @@
 
         private System.Windows.Forms.LinkLabel linkManageStudents;
         private System.Windows.Forms.LinkLabel linkManageCLOR;
+        private System.Windows.Forms.LinkLabel linkManageAssessments;
     }
 }
 
