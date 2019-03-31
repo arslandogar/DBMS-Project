@@ -56,7 +56,6 @@ namespace DBMS_Project
                 MessageBox.Show("Please Enter Valid Values!");
                 return;
             }
-            int status = 1;
             
             if (btnAddStudent.Text == "Add Student")
             {
@@ -70,11 +69,7 @@ namespace DBMS_Project
                     MessageBox.Show("This Registration Number Already Exists!");
                     return;
                 }
-                if(!checkBoxActive.Checked)
-                {
-                    status = 0;
-                }
-                string query = "insert into dbo.Student( FirstName,LastName,Contact,Email,RegistrationNumber,Status) values('" + this.txtFirstName.Text + "','" + this.txtLastName.Text + "','" + this.txtContact.Text + "','" + this.txtEmail.Text + "','" + this.txtRegNo.Text + "','" + status + "')";
+                string query = "insert into dbo.Student( FirstName,LastName,Contact,Email,RegistrationNumber,Status) values('" + this.txtFirstName.Text + "','" + this.txtLastName.Text + "','" + this.txtContact.Text + "','" + this.txtEmail.Text + "','" + this.txtRegNo.Text + "','" + Lookup.Active + "')";
                 SqlConnection con = new SqlConnection(DBClass.conString);
                 SqlCommand cmd = new SqlCommand(query, con);
                 con.Open();
@@ -185,16 +180,7 @@ namespace DBMS_Project
                         txtLastName.Text = oReader["LastName"].ToString();
                         txtContact.Text = oReader["Contact"].ToString();
                         txtEmail.Text = oReader["Email"].ToString();
-                        txtRegNo.Text = oReader["RegistrationNumber"].ToString();
-                        if(Convert.ToInt32(oReader["Status"]) == 0)
-                        {
-                            checkBoxActive.Checked = false;
-                        }
-                        else
-                        {
-                            checkBoxActive.Checked = true;
-                        }
-                        
+                        txtRegNo.Text = oReader["RegistrationNumber"].ToString();       
                     }
                     
                 }
@@ -367,7 +353,6 @@ namespace DBMS_Project
             btnCancel.Visible = false;
             btnAddStudent.Text = "Add Student";
             groupBoxAddStudent.Text = "Add Student";
-            checkBoxActive.Checked = true;
         }
 
         private bool validateForm()

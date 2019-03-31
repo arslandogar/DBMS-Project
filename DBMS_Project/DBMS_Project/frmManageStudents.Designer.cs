@@ -35,7 +35,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBoxAddStudent = new System.Windows.Forms.GroupBox();
-            this.checkBoxActive = new System.Windows.Forms.CheckBox();
             this.linkMain = new System.Windows.Forms.LinkLabel();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAddStudent = new System.Windows.Forms.Button();
@@ -100,7 +99,6 @@
             // 
             // groupBoxAddStudent
             // 
-            this.groupBoxAddStudent.Controls.Add(this.checkBoxActive);
             this.groupBoxAddStudent.Controls.Add(this.linkMain);
             this.groupBoxAddStudent.Controls.Add(this.btnCancel);
             this.groupBoxAddStudent.Controls.Add(this.btnAddStudent);
@@ -120,16 +118,6 @@
             this.groupBoxAddStudent.TabIndex = 1;
             this.groupBoxAddStudent.TabStop = false;
             this.groupBoxAddStudent.Text = "Add Student";
-            // 
-            // checkBoxActive
-            // 
-            this.checkBoxActive.AutoSize = true;
-            this.checkBoxActive.Location = new System.Drawing.Point(348, 111);
-            this.checkBoxActive.Name = "checkBoxActive";
-            this.checkBoxActive.Size = new System.Drawing.Size(56, 17);
-            this.checkBoxActive.TabIndex = 11;
-            this.checkBoxActive.Text = "Active";
-            this.checkBoxActive.UseVisualStyleBackColor = true;
             // 
             // linkMain
             // 
@@ -268,6 +256,5 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.LinkLabel linkMain;
-        private System.Windows.Forms.CheckBox checkBoxActive;
     }
 }

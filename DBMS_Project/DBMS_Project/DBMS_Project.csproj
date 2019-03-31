@@ -83,6 +83,13 @@
     <Compile Include="frmManageCLOs.Designer.cs">
       <DependentUpon>frmManageCLOs.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMarkAttendance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMarkAttendance.Designer.cs">
+      <DependentUpon>frmMarkAttendance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lookup.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmMain.resx">
@@ -102,6 +109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmManageStudents.resx">
       <DependentUpon>frmManageStudents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMarkAttendance.resx">
+      <DependentUpon>frmMarkAttendance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

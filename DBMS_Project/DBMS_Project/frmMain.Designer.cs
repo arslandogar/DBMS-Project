@@ -31,6 +31,7 @@
             this.linkManageStudents = new System.Windows.Forms.LinkLabel();
             this.linkManageCLOR = new System.Windows.Forms.LinkLabel();
             this.linkManageAssessments = new System.Windows.Forms.LinkLabel();
+            this.linkMarkAttendance = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // linkManageStudents
@@ -66,11 +67,23 @@
             this.linkManageAssessments.Text = "Manage Assessments";
             this.linkManageAssessments.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkManageAssessments_LinkClicked);
             // 
+            // linkMarkAttendance
+            // 
+            this.linkMarkAttendance.AutoSize = true;
+            this.linkMarkAttendance.Location = new System.Drawing.Point(359, 280);
+            this.linkMarkAttendance.Name = "linkMarkAttendance";
+            this.linkMarkAttendance.Size = new System.Drawing.Size(89, 13);
+            this.linkMarkAttendance.TabIndex = 3;
+            this.linkMarkAttendance.TabStop = true;
+            this.linkMarkAttendance.Text = "Mark Attendance";
+            this.linkMarkAttendance.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkMarkAttendance_LinkClicked);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.linkMarkAttendance);
             this.Controls.Add(this.linkManageAssessments);
             this.Controls.Add(this.linkManageCLOR);
             this.Controls.Add(this.linkManageStudents);
@@ -86,6 +99,7 @@
         private System.Windows.Forms.LinkLabel linkManageStudents;
         private System.Windows.Forms.LinkLabel linkManageCLOR;
         private System.Windows.Forms.LinkLabel linkManageAssessments;
+        private System.Windows.Forms.LinkLabel linkMarkAttendance;
     }
 }
 

@@ -279,21 +279,7 @@ namespace DBMS_Project
         }
         private bool validateForm()
         {
-            if(!validateName())
-            {
-                return false;
-            }
-            if(!validateMarks())
-            {
-                return false;
-
-            }
-            if (!validateRubric())
-            {
-                return false;
-
-            }
-            return true;
+            return validateName() && validateMarks() && validateRubric();
         }
 
         private void resetForm()
@@ -305,7 +291,5 @@ namespace DBMS_Project
             btnAddComponent.Text = "Add Component";
             groupBoxAddComponent.Text = "Add Component";
         }
-
-        
     }
 }

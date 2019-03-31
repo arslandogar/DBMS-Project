@@ -16,6 +16,7 @@ namespace DBMS_Project
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Lookup.makeLookUp();
             Application.Run(frmMain.getObject());
         }
     }

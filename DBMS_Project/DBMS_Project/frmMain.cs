@@ -47,5 +47,12 @@ namespace DBMS_Project
             temp.Show();
             this.Hide();
         }
+
+        private void linkMarkAttendance_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmMarkAttendance temp = new frmMarkAttendance();
+            temp.Show();
+            this.Hide();
+        }
     }
 }
