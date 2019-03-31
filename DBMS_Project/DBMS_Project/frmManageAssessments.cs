@@ -285,6 +285,7 @@ namespace DBMS_Project
                 while (oReader.Read())
                 {
                     title = oReader["Title"].ToString();
+                    temp.AssessmentMarks = int.Parse(oReader["TotalMarks"].ToString());
                     temp.labelComponentDetails.Text = "Add Component For Assessment: " + title;
                     temp.groupBoxComponents.Text = "View Components For Assessment: " + title;
                     temp.txtAssessmentId.Text = selectedId.ToString();

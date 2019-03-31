@@ -14,6 +14,7 @@ namespace DBMS_Project
     public partial class frmManageComponents : Form
     {
         private int selectedId;
+        public int AssessmentMarks;
         public frmManageComponents()
         {
             DataGridViewButtonColumn btnUpdate = new DataGridViewButtonColumn();
@@ -239,6 +240,31 @@ namespace DBMS_Project
                     return false;
                 }
             }
+            int allowedMarks = AssessmentMarks;
+            int assignedMarks = 0;
+            string query = "SELECT * FROM dbo.AssessmentComponent WHERE AssessmentId = '" + txtAssessmentId.Text + "'";
+            SqlConnection con = new SqlConnection(DBClass.conString);
+            SqlCommand cmd = new SqlCommand(query, con);
+            con.Open();
+            using (SqlDataReader oReader = cmd.ExecuteReader())
+            {
+                while (oReader.Read())
+                {
+                    assignedMarks += int.Parse(oReader["TotalMarks"].ToString());
+
+                }
+
+            }
+            allowedMarks = AssessmentMarks - assignedMarks;
+            con.Close();
+            if(int.Parse(txtMarks.Text) > allowedMarks)
+            {
+                errorProvider1.SetError(txtMarks, "Maximum " + allowedMarks.ToString() + " Marks Are Allowed For This Component!");
+                return false;
+            }
+
+
+
             errorProvider1.SetError(txtMarks, "");
             return true;
         }
