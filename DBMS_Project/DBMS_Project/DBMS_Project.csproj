@@ -59,6 +59,12 @@
     <Compile Include="frmManageAssessments.Designer.cs">
       <DependentUpon>frmManageAssessments.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmManageComponents.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManageComponents.Designer.cs">
+      <DependentUpon>frmManageComponents.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmManageRubrics.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmManageCLOs.resx">
       <DependentUpon>frmManageCLOs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmManageComponents.resx">
+      <DependentUpon>frmManageComponents.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmManageRubrics.resx">
       <DependentUpon>frmManageRubrics.cs</DependentUpon>

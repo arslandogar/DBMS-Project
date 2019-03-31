@@ -50,7 +50,7 @@
             this.linkManageCLOR.Location = new System.Drawing.Point(357, 245);
             this.linkManageCLOR.Name = "linkManageCLOR";
             this.linkManageCLOR.Size = new System.Drawing.Size(135, 13);
-            this.linkManageCLOR.TabIndex = 1;
+            this.linkManageCLOR.TabIndex = 2;
             this.linkManageCLOR.TabStop = true;
             this.linkManageCLOR.Text = "Manage CLOs and Rubrics";
             this.linkManageCLOR.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkManageCLOR_LinkClicked);
@@ -61,7 +61,7 @@
             this.linkManageAssessments.Location = new System.Drawing.Point(357, 211);
             this.linkManageAssessments.Name = "linkManageAssessments";
             this.linkManageAssessments.Size = new System.Drawing.Size(110, 13);
-            this.linkManageAssessments.TabIndex = 2;
+            this.linkManageAssessments.TabIndex = 1;
             this.linkManageAssessments.TabStop = true;
             this.linkManageAssessments.Text = "Manage Assessments";
             this.linkManageAssessments.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkManageAssessments_LinkClicked);

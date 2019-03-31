@@ -73,7 +73,7 @@
             this.txtWeightage.Name = "txtWeightage";
             this.txtWeightage.PromptChar = '.';
             this.txtWeightage.Size = new System.Drawing.Size(111, 20);
-            this.txtWeightage.TabIndex = 20;
+            this.txtWeightage.TabIndex = 5;
             this.txtWeightage.ValidatingType = typeof(int);
             this.txtWeightage.Validating += new System.ComponentModel.CancelEventHandler(this.txtWeightage_Validating);
             // 
@@ -84,7 +84,7 @@
             this.txtMarks.Name = "txtMarks";
             this.txtMarks.PromptChar = '.';
             this.txtMarks.Size = new System.Drawing.Size(111, 20);
-            this.txtMarks.TabIndex = 19;
+            this.txtMarks.TabIndex = 4;
             this.txtMarks.ValidatingType = typeof(int);
             this.txtMarks.Validating += new System.ComponentModel.CancelEventHandler(this.txtMarks_Validating);
             // 
@@ -112,7 +112,7 @@
             this.linkMain.Location = new System.Drawing.Point(712, 140);
             this.linkMain.Name = "linkMain";
             this.linkMain.Size = new System.Drawing.Size(58, 13);
-            this.linkMain.TabIndex = 14;
+            this.linkMain.TabIndex = 8;
             this.linkMain.TabStop = true;
             this.linkMain.Text = "Main Page";
             this.linkMain.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkMain_LinkClicked);
@@ -123,7 +123,7 @@
             this.btnCancel.Location = new System.Drawing.Point(223, 130);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 4;
+            this.btnCancel.TabIndex = 7;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Visible = false;
@@ -142,10 +142,10 @@
             this.btnAddAssessment.Location = new System.Drawing.Point(98, 130);
             this.btnAddAssessment.Name = "btnAddAssessment";
             this.btnAddAssessment.Size = new System.Drawing.Size(104, 23);
-            this.btnAddAssessment.TabIndex = 2;
+            this.btnAddAssessment.TabIndex = 6;
             this.btnAddAssessment.Text = "Add Assessment";
             this.btnAddAssessment.UseVisualStyleBackColor = true;
-            this.btnAddAssessment.Click += new System.EventHandler(this.btnAddCLO_Click);
+            this.btnAddAssessment.Click += new System.EventHandler(this.btnAddAssessment_Click);
             // 
             // label1
             // 
@@ -179,7 +179,7 @@
             this.dataGridViewAssessments.ReadOnly = true;
             this.dataGridViewAssessments.Size = new System.Drawing.Size(751, 228);
             this.dataGridViewAssessments.TabIndex = 2;
-            this.dataGridViewAssessments.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCLOs_CellContentClick);
+            this.dataGridViewAssessments.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAssessments_CellContentClick);
             // 
             // errorProvider1
             // 
@@ -194,7 +194,7 @@
             this.Controls.Add(this.groupBoxAddAssessment);
             this.Name = "frmManageAssessments";
             this.Text = "Manage Assessments";
-            this.Load += new System.EventHandler(this.frmManageCLOs_Load);
+            this.Load += new System.EventHandler(this.frmManageAssessments_Load);
             this.groupBoxAddAssessment.ResumeLayout(false);
             this.groupBoxAddAssessment.PerformLayout();
             this.groupBoxAssessments.ResumeLayout(false);

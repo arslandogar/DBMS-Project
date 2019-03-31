@@ -52,7 +52,7 @@ namespace DBMS_Project
             dataGridViewAssessments.Columns.Add(btnDelete);
         }
 
-        private void btnAddCLO_Click(object sender, EventArgs e)
+        private void btnAddAssessment_Click(object sender, EventArgs e)
         {
             if(!validateForm())
             {
@@ -91,7 +91,7 @@ namespace DBMS_Project
 
         }
 
-        private void dataGridViewCLOs_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewAssessments_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = dataGridViewAssessments.Columns["ID"].Index;
             selectedId = Convert.ToInt32(dataGridViewAssessments.Rows[e.RowIndex].Cells[index].Value);
@@ -128,9 +128,9 @@ namespace DBMS_Project
                 btnCancel.Enabled = true;
                 btnCancel.Visible = true;
             }
-            else if (e.ColumnIndex == dataGridViewAssessments.Columns["btnRubrics"].Index)
+            else if (e.ColumnIndex == dataGridViewAssessments.Columns["btnComponents"].Index)
             {
-                openRubricsForm();
+                openComponentsForm();
             }
         }
 
@@ -141,7 +141,7 @@ namespace DBMS_Project
             this.Close();
         }
 
-        private void frmManageCLOs_Load(object sender, EventArgs e)
+        private void frmManageAssessments_Load(object sender, EventArgs e)
         {
             resetForm();
             ShowAssessmentData();
@@ -272,11 +272,11 @@ namespace DBMS_Project
             groupBoxAddAssessment.Text = "Add Assessment";
         }
 
-        private void openRubricsForm()
+        private void openComponentsForm()
         {
-            string name;
-            frmManageRubrics temp = new frmManageRubrics();
-            string qeury = "SELECT * FROM dbo.Clo WHERE ID = '" + selectedId + "'";
+            string title;
+            frmManageComponents temp = new frmManageComponents();
+            string qeury = "SELECT * FROM dbo.Assessment WHERE ID = '" + selectedId + "'";
             SqlConnection con = new SqlConnection(DBClass.conString);
             SqlCommand cmd = new SqlCommand(qeury, con);
             con.Open();
@@ -284,10 +284,10 @@ namespace DBMS_Project
             {
                 while (oReader.Read())
                 {
-                    name = oReader["Name"].ToString();
-                    temp.labelCLODetails.Text = "Add Rubric For CLO: " + name;
-                    temp.groupBoxRubrics.Text = "View Rubrics For CLO: " + name;
-                    temp.txtCLOId.Text = selectedId.ToString();
+                    title = oReader["Title"].ToString();
+                    temp.labelComponentDetails.Text = "Add Component For Assessment: " + title;
+                    temp.groupBoxComponents.Text = "View Components For Assessment: " + title;
+                    temp.txtAssessmentId.Text = selectedId.ToString();
                 }
 
             }
